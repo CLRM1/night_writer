@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-03T23:36:42-07:00">2022-03-03T23:36:42-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-04T14:19:24-07:00">2022-03-04T14:19:24-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  71.43%
+  53.85%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.71
+         0.54
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>7</b> relevant lines,
-    <span class="green"><b>5</b> lines covered</span> and
-    <span class="red"><b>2</b> lines missed. </span>
+    <b>13</b> relevant lines,
+    <span class="green"><b>7</b> lines covered</span> and
+    <span class="red"><b>6</b> lines missed. </span>
     (<span class="red">
-  71.43%
+  53.85%
 </span>
 )
   </div>
@@ -71,13 +71,13 @@
       <tbody>
         
           <tr class="t-file">
-            <td class="strong t-file__name"><a href="#62aff9766d2a053fac439b328b575b8a8b29fc92" class="src_link" title="lib/welcome.rb">lib/welcome.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">71.43 %</td>
-            <td class="cell--number">14</td>
+            <td class="strong t-file__name"><a href="#88e763910ae38651a124c615f1f0660eaa33721b" class="src_link" title="lib/file_converter.rb">lib/file_converter.rb</a></td>
+            <td class="red strong cell--number t-file__coverage">53.85 %</td>
+            <td class="cell--number">31</td>
+            <td class="cell--number">13</td>
             <td class="cell--number">7</td>
-            <td class="cell--number">5</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">0.71</td>
+            <td class="cell--number">6</td>
+            <td class="cell--number">0.54</td>
             
           </tr>
         
@@ -98,12 +98,12 @@
 
       <div class="source_files">
       
-        <div class="source_table" id="62aff9766d2a053fac439b328b575b8a8b29fc92">
+        <div class="source_table" id="88e763910ae38651a124c615f1f0660eaa33721b">
   <div class="header">
-    <h3>lib/welcome.rb</h3>
+    <h3>lib/file_converter.rb</h3>
     <h4>
       <span class="red">
-  71.43%
+  53.85%
 </span>
 
       lines covered
@@ -112,9 +112,9 @@
     
 
     <div class="t-line-summary">
-      <b>7</b> relevant lines.
-      <span class="green"><b>5</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <b>13</b> relevant lines.
+      <span class="green"><b>7</b> lines covered</span> and
+      <span class="red"><b>6</b> lines missed.</span>
     </div>
 
     
@@ -131,7 +131,7 @@
 
             
 
-            <code class="ruby">class Welcome</code>
+            <code class="ruby">class FileConverter</code>
           </li>
         </div>
       
@@ -142,18 +142,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  #stores file contents to variable</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="3">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="3">
+            
             
 
             
 
-            <code class="ruby">  def initialize(argument = 0)</code>
+            <code class="ruby">  #get input from command line from ARGV and store in variable</code>
           </li>
         </div>
       
@@ -164,29 +164,29 @@
 
             
 
-            <code class="ruby">    @argument = argument</code>
+            <code class="ruby">  def initialize(file)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="5">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    @file = file</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="6">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    @new_file_name = ARGV</code>
           </li>
         </div>
       
@@ -197,18 +197,18 @@
 
             
 
-            <code class="ruby">  def name</code>
+            <code class="ruby">    @new_braille_file = &#39;&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="8">
+          <li class="never" data-hits="" data-linenumber="8">
             
             
 
             
 
-            <code class="ruby">    &#39;braille&#39;</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -219,29 +219,29 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">  # create a new file and shuvel the &#39;file&#39; ^^ variable with message content into the new file</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="10">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
+          <li class="covered" data-hits="1" data-linenumber="10">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def new</code>
+            <code class="ruby">  def create_new_file</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="11">
+            
+            
+
+            
+
+            <code class="ruby">    @new_braille_file = open(&quot;#{@new_file_name[1]}&quot;, &#39;w&#39;) do |new_file|</code>
           </li>
         </div>
       
@@ -252,7 +252,7 @@
 
             
 
-            <code class="ruby">    1</code>
+            <code class="ruby">      new_file &lt;&lt; @file</code>
           </li>
         </div>
       
@@ -263,7 +263,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -274,7 +274,194 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="16">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def upddate_newfile</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">    # open the new brialle file and read each line of the file, storing them as elements in an array</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby">    lines = File.readlines(&#39;braille.txt&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="19">
+            
+            
+
+            
+
+            <code class="ruby">    # join the elements in the array into a single array and store in the variable characters</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="20">
+            
+            
+
+            
+
+            <code class="ruby">    characters = lines.join</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="21">
+            
+            
+
+            
+
+            <code class="ruby">    # use the length method to count the number of characters in the array</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby">    # why is is this 1 character too high?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="23">
+            
+            
+
+            
+
+            <code class="ruby">    character_count = characters.length</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="24">
+            
+            
+
+            
+
+            <code class="ruby">    puts &quot;Created &#39;#{@new_file_name.first}&#39; containing #{character_count - 1} characters&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="26">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
             <code class="ruby">end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby"># </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="29">
+            
+            
+
+            
+
+            <code class="ruby"># translation = FileConverter.new(File.read(&quot;message.txt&quot;))</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby"># translation.create_new_file</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
+            
+            
+
+            
+
+            <code class="ruby"># translation.upddate_newfile</code>
           </li>
         </div>
       

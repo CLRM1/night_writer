@@ -1,7 +1,7 @@
 class FileConverter
   #stores file contents to variable
   #get input from command line from ARGV and store in variable
-  attr_reader :file, :@new_braille_file
+  attr_reader :file, :new_braille_file
   def initialize(file)
     @file = file
     @inputs = ARGV
@@ -9,9 +9,12 @@ class FileConverter
   end
   # create a new file and shuvel the 'file' ^^ variable with message content into the new file
   def create_new_file
+    # require 'pry'; binding.pry
     @new_braille_file = open("./lib/#{@inputs[1]}", 'w') do |new_file|
+      # require 'pry'; binding.pry
       new_file << @file
     end
+    # require 'pry'; binding.pry
   end
 
   def read_new_file

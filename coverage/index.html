@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-04T14:19:24-07:00">2022-03-04T14:19:24-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-04T15:10:33-07:00">2022-03-04T15:10:33-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  53.85%
+  57.14%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.54
+         0.79
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>13</b> relevant lines,
-    <span class="green"><b>7</b> lines covered</span> and
+    <b>14</b> relevant lines,
+    <span class="green"><b>8</b> lines covered</span> and
     <span class="red"><b>6</b> lines missed. </span>
     (<span class="red">
-  53.85%
+  57.14%
 </span>
 )
   </div>
@@ -72,12 +72,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#88e763910ae38651a124c615f1f0660eaa33721b" class="src_link" title="lib/file_converter.rb">lib/file_converter.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">53.85 %</td>
-            <td class="cell--number">31</td>
-            <td class="cell--number">13</td>
-            <td class="cell--number">7</td>
+            <td class="red strong cell--number t-file__coverage">57.14 %</td>
+            <td class="cell--number">28</td>
+            <td class="cell--number">14</td>
+            <td class="cell--number">8</td>
             <td class="cell--number">6</td>
-            <td class="cell--number">0.54</td>
+            <td class="cell--number">0.79</td>
             
           </tr>
         
@@ -103,7 +103,7 @@
     <h3>lib/file_converter.rb</h3>
     <h4>
       <span class="red">
-  53.85%
+  57.14%
 </span>
 
       lines covered
@@ -112,8 +112,8 @@
     
 
     <div class="t-line-summary">
-      <b>13</b> relevant lines.
-      <span class="green"><b>7</b> lines covered</span> and
+      <b>14</b> relevant lines.
+      <span class="green"><b>8</b> lines covered</span> and
       <span class="red"><b>6</b> lines missed.</span>
     </div>
 
@@ -164,7 +164,7 @@
 
             
 
-            <code class="ruby">  def initialize(file)</code>
+            <code class="ruby">  attr_reader :file</code>
           </li>
         </div>
       
@@ -175,40 +175,40 @@
 
             
 
+            <code class="ruby">  def initialize(file)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="6">
+            <span class="hits">2</span>
+            
+
+            
+
             <code class="ruby">    @file = file</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="6">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="7">
+            <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">    @new_file_name = ARGV</code>
+            <code class="ruby">    @inputs = ARGV</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="8">
+            <span class="hits">2</span>
             
 
             
 
             <code class="ruby">    @new_braille_file = &#39;&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="8">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -219,12 +219,23 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="10">
+            
+            
+
+            
+
             <code class="ruby">  # create a new file and shuvel the &#39;file&#39; ^^ variable with message content into the new file</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
+          <li class="covered" data-hits="1" data-linenumber="11">
             <span class="hits">1</span>
             
 
@@ -235,18 +246,18 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="11">
+          <li class="missed" data-hits="0" data-linenumber="12">
             
             
 
             
 
-            <code class="ruby">    @new_braille_file = open(&quot;#{@new_file_name[1]}&quot;, &#39;w&#39;) do |new_file|</code>
+            <code class="ruby">    @new_braille_file = open(&quot;./lib/#{@inputs[1]}&quot;, &#39;w&#39;) do |new_file|</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="12">
+          <li class="missed" data-hits="0" data-linenumber="13">
             
             
 
@@ -257,7 +268,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="13">
+          <li class="never" data-hits="" data-linenumber="14">
             
             
 
@@ -268,7 +279,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="15">
             
             
 
@@ -279,7 +290,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="15">
+          <li class="never" data-hits="" data-linenumber="16">
             
             
 
@@ -290,18 +301,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="16">
+          <li class="covered" data-hits="1" data-linenumber="17">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def upddate_newfile</code>
+            <code class="ruby">  def read_new_file</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="17">
+          <li class="never" data-hits="" data-linenumber="18">
             
             
 
@@ -312,18 +323,18 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="18">
+          <li class="missed" data-hits="0" data-linenumber="19">
             
             
 
             
 
-            <code class="ruby">    lines = File.readlines(&#39;braille.txt&#39;)</code>
+            <code class="ruby">    lines = File.readlines(&quot;./lib/#{@inputs[1]}&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="19">
+          <li class="never" data-hits="" data-linenumber="20">
             
             
 
@@ -334,7 +345,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="20">
+          <li class="missed" data-hits="0" data-linenumber="21">
             
             
 
@@ -345,7 +356,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="21">
+          <li class="never" data-hits="" data-linenumber="22">
             
             
 
@@ -356,7 +367,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="22">
+          <li class="never" data-hits="" data-linenumber="23">
             
             
 
@@ -367,7 +378,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="23">
+          <li class="missed" data-hits="0" data-linenumber="24">
             
             
 
@@ -378,24 +389,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="24">
+          <li class="missed" data-hits="0" data-linenumber="25">
             
             
 
             
 
-            <code class="ruby">    puts &quot;Created &#39;#{@new_file_name.first}&#39; containing #{character_count - 1} characters&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="25">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
+            <code class="ruby">    puts &quot;Created &#39;#{@inputs[1]}&#39; containing #{character_count - 1} characters&quot;</code>
           </li>
         </div>
       
@@ -406,7 +406,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -417,7 +417,7 @@
 
             
 
-            <code class="ruby">end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -428,40 +428,7 @@
 
             
 
-            <code class="ruby"># </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="29">
-            
-            
-
-            
-
-            <code class="ruby"># translation = FileConverter.new(File.read(&quot;message.txt&quot;))</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="30">
-            
-            
-
-            
-
-            <code class="ruby"># translation.create_new_file</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="31">
-            
-            
-
-            
-
-            <code class="ruby"># translation.upddate_newfile</code>
+            <code class="ruby">end</code>
           </li>
         </div>
       

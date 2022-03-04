@@ -1,6 +1,7 @@
 class FileConverter
   #stores file contents to variable
   #get input from command line from ARGV and store in variable
+  attr_reader :file, :@new_braille_file
   def initialize(file)
     @file = file
     @inputs = ARGV
@@ -15,7 +16,7 @@ class FileConverter
 
   def read_new_file
     # open the new brialle file and read each line of the file, storing them as elements in an array
-    lines = File.readlines(@inputs[1])
+    lines = File.readlines("./lib/#{@inputs[1]}")
     # join the elements in the array into a single array and store in the variable characters
     characters = lines.join
     # use the length method to count the number of characters in the array
@@ -25,7 +26,3 @@ class FileConverter
   end
 
 end
-#
-# translation = FileConverter.new(File.read("message.txt"))
-# translation.create_new_file
-# translation.upddate_newfile

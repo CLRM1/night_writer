@@ -36,7 +36,7 @@ RSpec.describe FileConverter do
 
   describe 'Iteration 2' do
     it 'has a map of english letters to braille characters' do
-      english_to_braille_map = English_Braille_Map.new
+      english_to_braille_map = English_Braille_Map.new(:a)
       expect(english_to_braille_map.english_key_map).to be_a(Hash)
       english_to_braille_map.letters_a_through_g
       english_to_braille_map.letters_h_through_n
@@ -49,19 +49,26 @@ RSpec.describe FileConverter do
     end
 
     it 'has a map of all english letters' do
-      english_to_braille_map = English_Braille_Map.new
+      english_to_braille_map = English_Braille_Map.new(:a)
       english_to_braille_map.all_letters
       expect(english_to_braille_map.english_key_map[:r]).to eq(['0 .','0 0','0 .'])
       expect(english_to_braille_map.english_key_map[:z]).to eq(['0 .','. 0','0 0'])
     end
 
-    it 'it prints a single english lowercase letter' do
-      english_to_braille_map = English_Braille_Map.new
+    xit 'it prints a single english lowercase letter' do
+      english_to_braille_map = English_Braille_Map.new(:a)
       english_to_braille_map.all_letters
-      expect(english_to_braille_map.find_braille_char(letter)).to eq('0 .
-                                                                         . .
-                                                                         . .
-                                                                         . .')
+      expect(english_to_braille_map.find_braille_char(:a)).to eq('0 .
+                                                                 . .
+                                                                 . .
+                                                                 . .')
+    end
+
+    it 'can read the original file and return a single letter in the new file' do
+      ARGV = [@file, @new_file]
+      @translation = FileConverter.new(File.read(@file))
+      @translation.create_new_file
+      expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 1 characters")
     end
   end
 end

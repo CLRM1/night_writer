@@ -40,10 +40,16 @@ RSpec.describe FileConverter do
     it 'has a map of english letters to braille characters' do
       english_to_braille_map = English_Braille_Map.new
       expect(english_to_braille_map.english_key_map).to be_a(Hash)
+      # require 'pry'; binding.pry
+      english_to_braille_map.letter_a_through_g
+      english_to_braille_map.letters_h_through_n
+      english_to_braille_map.letters_o_through_u
+      english_to_braille_map.letters_v_through_z
       require 'pry'; binding.pry
-      expect(english_to_braille_map.english_key_map[:a]).to eq(['0','.','.','.','.','.'])
-      expect(english_to_braille_map.english_key_map[:b]).to eq(['0','.','.','.','.','.'])
-      expect(english_to_braille_map.english_key_map[:c]).to eq(['0','.','.','.','.','.'])
+      expect(english_to_braille_map.english_key_map[:a]).to eq(['0 .','. .','. .'])
+      expect(english_to_braille_map.english_key_map[:h]).to eq(['0 .','0 0','. .'])
+      expect(english_to_braille_map.english_key_map[:o]).to eq(['0 .','. 0','0 .'])
+      expect(english_to_braille_map.english_key_map[:v]).to eq(['0 .','0 .','0 0'])
     end
   end
 end

@@ -1,3 +1,5 @@
+require './lib/english_braille_map'
+
 class FileConverter
   # stores frist file (message.txt) contents to variable
   attr_reader :file
@@ -26,5 +28,15 @@ class FileConverter
     characters = lines.join
     character_count = characters.length
     p "Created '#{@inputs[1]}' containing #{character_count - 1} characters"
+  end
+
+  def update_new_file_to_braille
+    old_lines = read_new_file
+    characters = old_lines.join
+    translation = English_Braille_Map.new(characters)
+    new_lines = translation.find_braille_char
+    @new_braille_file = open("./lib/#{@inputs[1]}", 'w') do |new_file|
+      new_file << new_lines
+    end
   end
 end

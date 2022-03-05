@@ -4,7 +4,7 @@ class English_Braille_Map
 
   def initialize(letter)
     @english_key_map = {}
-    @letter = letter
+    @letter = letter.chomp.to_sym
   end
 
   def letters_a_through_g
@@ -54,10 +54,16 @@ class English_Braille_Map
 
   def find_braille_char(letter = @letter)
     all_letters
+    # require 'pry'; binding.pry
     @english_key_map[@letter].each do |char|
       # require 'pry'; binding.pry
-      puts char
+      p char
     end
   end
+  #
+  # def write_braille_char(letter)
+  #   translation = FileConverter.new('./lib/message.txt')
+  #   require 'pry'; binding.pry
+  # end
 
 end

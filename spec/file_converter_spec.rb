@@ -40,6 +40,7 @@ RSpec.describe FileConverter do
     it 'has a map of english letters to braille characters' do
       english_to_braille_map = English_Braille_Map.new
       expect(english_to_braille_map.english_key_map).to be_a(Hash)
+      expect(english_to_braille_map.english_key_map[:a]).to eq(['0','.','.','.','.','.'])
     end
   end
 end

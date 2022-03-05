@@ -1,6 +1,7 @@
 require 'simplecov'
 SimpleCov.start
 require './lib/file_converter'
+require './lib/english_braille_map'
 
 RSpec.describe FileConverter do
   before(:each) do
@@ -38,7 +39,7 @@ RSpec.describe FileConverter do
   describe 'Iteration 2' do
     it 'has a map of english letters to braille characters' do
       english_to_braille_map = English_Braille_Map.new
-      expect(english_to_braille_map).to be_a(Hash)
+      expect(english_to_braille_map.english_key_map).to be_a(Hash)
     end
   end
 end

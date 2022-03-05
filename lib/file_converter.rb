@@ -36,7 +36,9 @@ class FileConverter
     translation = English_Braille_Map.new(characters)
     new_lines = translation.find_braille_char
     @new_braille_file = open("./lib/#{@inputs[1]}", 'w') do |new_file|
-      new_file << new_lines
+       new_lines.each do |char|
+         new_file <<  char + "#{$/}"
+       end
     end
   end
 end

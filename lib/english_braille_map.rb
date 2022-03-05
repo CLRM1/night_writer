@@ -55,15 +55,7 @@ class English_Braille_Map
   def find_braille_char(letter = @letter)
     all_letters
     # require 'pry'; binding.pry
-    @english_key_map[@letter].each do |char|
-      # require 'pry'; binding.pry
-      p char
-    end
+    @english_key_map[@letter]
   end
-  #
-  # def write_braille_char(letter)
-  #   translation = FileConverter.new('./lib/message.txt')
-  #   require 'pry'; binding.pry
-  # end
 
 end

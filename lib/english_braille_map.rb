@@ -4,7 +4,16 @@ class English_Braille_Map
 
   def initialize(letter)
     @english_key_map = {}
-    @letter = letter.chomp.to_sym
+    @letter = letter
+    # require 'pry'; binding.pry
+    # @letter = letter.chomp.to_sym
+  end
+
+  def letter_parser
+    @letter.map do |letter|
+      # require 'pry'; binding.pry
+      letter.chomp.chars.map {|letter| letter.to_sym}
+    end
   end
 
   def letters_a_through_g
@@ -54,8 +63,11 @@ class English_Braille_Map
 
   def find_braille_char(letter = @letter)
     all_letters
-    # require 'pry'; binding.pry
-    @english_key_map[@letter]
+    letter_array = letter_parser
+    symbol_array = letter_array.flatten
+    symbol_array.map do |char|
+      @english_key_map[char]
+    end
   end
 
 end

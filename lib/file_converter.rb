@@ -23,7 +23,7 @@ class FileConverter
   end
 
   def print_confirmation
-    lines = read_new_file
+    lines = File.readlines("./lib/message.txt")
     # join the elements in the array into a single array and store in the variable characters
     characters = lines.join
     character_count = characters.length
@@ -32,13 +32,13 @@ class FileConverter
 
   def update_new_file_to_braille
     old_lines = read_new_file
-    characters = old_lines.join
-    translation = English_Braille_Map.new(characters)
+    # old_characters = old_lines.join
+    translation = English_Braille_Map.new(old_lines)
     new_lines = translation.find_braille_char
-    @new_braille_file = open("./lib/#{@inputs[1]}", 'w') do |new_file|
-       new_lines.each do |char|
-         new_file <<  char + "#{$/}"
-       end
-    end
+    @new_braille_file = open("./lib/#{@inputs[1]}", 'w'){|new_file|
+       new_lines.each {|char|
+         char.each {|element|
+             new_file << element + "#{$/}"
+                        }}}
   end
 end

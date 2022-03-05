@@ -16,12 +16,10 @@ RSpec.describe FileConverter do
     end
 
     it 'can read a file' do
-      # require 'pry'; binding.pry
       expect(@translation.file.lines[1]).to eq("hello world!\n")
     end
 
     it 'can create a new file with the same contents as the first' do
-      # require 'pry'; binding.pry
       ARGV = [@file, @new_file]
       translation = FileConverter.new(File.read(@file))
       translation.create_new_file
@@ -40,12 +38,10 @@ RSpec.describe FileConverter do
     it 'has a map of english letters to braille characters' do
       english_to_braille_map = English_Braille_Map.new
       expect(english_to_braille_map.english_key_map).to be_a(Hash)
-      # require 'pry'; binding.pry
       english_to_braille_map.letters_a_through_g
       english_to_braille_map.letters_h_through_n
       english_to_braille_map.letters_o_through_u
       english_to_braille_map.letters_v_through_z
-      require 'pry'; binding.pry
       expect(english_to_braille_map.english_key_map[:a]).to eq(['0 .','. .','. .'])
       expect(english_to_braille_map.english_key_map[:h]).to eq(['0 .','0 0','. .'])
       expect(english_to_braille_map.english_key_map[:o]).to eq(['0 .','. 0','0 .'])
@@ -55,8 +51,17 @@ RSpec.describe FileConverter do
     it 'has a map of all english letters' do
       english_to_braille_map = English_Braille_Map.new
       english_to_braille_map.all_letters
-      expect(english_to_braille_map.english_key_map[:r]).to eq()
+      expect(english_to_braille_map.english_key_map[:r]).to eq(['0 .','0 0','0 .'])
+      expect(english_to_braille_map.english_key_map[:z]).to eq(['0 .','. 0','0 0'])
     end
 
+    it 'it prints a single english lowercase letter' do
+      english_to_braille_map = English_Braille_Map.new
+      english_to_braille_map.all_letters
+      expect(english_to_braille_map.find_braille_char(letter)).to eq('0 .
+                                                                         . .
+                                                                         . .
+                                                                         . .')
+    end
   end
 end

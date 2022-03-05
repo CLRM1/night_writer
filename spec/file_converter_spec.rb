@@ -41,7 +41,7 @@ RSpec.describe FileConverter do
       english_to_braille_map = English_Braille_Map.new
       expect(english_to_braille_map.english_key_map).to be_a(Hash)
       # require 'pry'; binding.pry
-      english_to_braille_map.letter_a_through_g
+      english_to_braille_map.letters_a_through_g
       english_to_braille_map.letters_h_through_n
       english_to_braille_map.letters_o_through_u
       english_to_braille_map.letters_v_through_z
@@ -51,5 +51,12 @@ RSpec.describe FileConverter do
       expect(english_to_braille_map.english_key_map[:o]).to eq(['0 .','. 0','0 .'])
       expect(english_to_braille_map.english_key_map[:v]).to eq(['0 .','0 .','0 0'])
     end
+
+    it 'has a map of all english letters' do
+      english_to_braille_map = English_Braille_Map.new
+      english_to_braille_map.all_letters
+      expect(english_to_braille_map.english_key_map[:r]).to eq()
+    end
+
   end
 end

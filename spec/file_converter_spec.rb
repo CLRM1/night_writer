@@ -71,5 +71,13 @@ RSpec.describe FileConverter do
       @translation.update_new_file_to_braille
       expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 1 characters")
     end
+
+    it 'can read the original file and return multiple braille characters in the new file' do
+      ARGV = [@file, @new_file]
+      @translation = FileConverter.new(File.read(@file))
+      @translation.create_new_file
+      @translation.update_new_file_to_braille
+      expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 2 characters")
+    end
   end
 end

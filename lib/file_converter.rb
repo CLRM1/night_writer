@@ -10,9 +10,10 @@ class FileConverter
     @new_braille_file = ''
   end
 
- def read_original_file
-   lines = File.readlines("./lib/message.txt")
- end
+  def read_original_file
+    lines = File.readlines("./lib/message.txt")
+  end
+
   # create a new file and shuvel the 'file' ^^ variable with message content into the new file
   def create_new_file
     @new_braille_file = open("./lib/#{@inputs[1]}", 'w') do |new_file|
@@ -25,36 +26,30 @@ class FileConverter
     lines = File.readlines("./lib/#{@inputs[1]}")
   end
 
+  def create_braille_characters
+    translation = English_Braille_Map.new(read_original_file)
+    translation.find_braille_chars.flatten
+  end
+
+  def update_new_file_to_braille
+    braille_array = create_braille_characters
+    @new_braille_file = open("./lib/#{@inputs[1]}", 'w') do |new_file|
+      braille_array.each_slice(3) {|element|
+                    new_file << element[0] + ' '}
+                    new_file <<  "#{$/}"
+      braille_array.drop(1).each_slice(3) {|element|
+                    new_file << element[0] + ' '}
+                    new_file << "#{$/}"
+      braille_array.drop(2).each_slice(3) {|element|
+                    new_file << element[0] + ' '}
+    end
+  end
+
   def print_confirmation
     # join the elements in the array into a single array and store in the variable characters
     characters = read_original_file.join
     character_count = characters.length
     p "Created '#{@inputs[1]}' containing #{character_count - 1} characters"
-  end
-
-  def create_braille_space
-    translation = English_Braille_Map.new(read_original_file)
-    new_lines = translation.find_braille_chars
-    new_lines = (translation.find_braille_chars).flatten
-  end
-
-  def update_new_file_to_braille
-    braille_array = create_braille_space
-    line = ''
-    
-    @new_braille_file = open("./lib/#{@inputs[1]}", 'w') do |new_file|
-
-      braille_array.each_slice(3) {|element|
-                    line += element[0] + ' '}
-      new_file << line + "#{$/}"
-
-      braille_array.drop(1).each_slice(3) {|element|
-                    new_file << element[0] + ' '}
-                    new_file << "#{$/}"
-
-      braille_array.drop(2).each_slice(3) {|element|
-                    new_file << element[0] + ' '}
-    end
   end
 end
 

@@ -85,7 +85,7 @@ RSpec.describe FileConverter do
       @translation = FileConverter.new(File.read(@file))
       @translation.create_new_file
       @translation.update_new_file_to_braille
-      expect(@translation.braille_character_count).to eq(242)
+      expect(@translation.braille_characater_count).to eq(240)
     end
   end
 end

@@ -31,16 +31,33 @@ class FileConverter
     translation.find_braille_chars.flatten
   end
 
+  def braille_characater_count
+    lines = File.readlines("./lib/#{@inputs[1]}")
+    lines = lines.map{|element| element.chomp}
+    braille_character_count = lines.join.length
+  end
+
   def update_new_file_to_braille
     braille_array = create_braille_characters
     @new_braille_file = open("./lib/#{@inputs[1]}", 'w') do |new_file|
-      braille_array.each_slice(3) {|element|
+      if braille_characater_count <= 80
+        braille_array.each_slice(3) {|element|
+                      new_file << element[0] + ' '}
+        new_file <<  "#{$/}"
+        braille_array.drop(1).each_slice(3) {|element|
+                      new_file << element[0] + ' '}
+        new_file << "#{$/}"
+        braille_array.drop(2).each_slice(3) {|element|
+                      new_file << element[0] + ' '}
+      end
+      new_file << "#{$/}"
+      braille_array.drop(60).each_slice(3) {|element|
                     new_file << element[0] + ' '}
-                    new_file <<  "#{$/}"
-      braille_array.drop(1).each_slice(3) {|element|
+      new_file << "#{$/}"
+      braille_array.drop(61).each_slice(3) {|element|
                     new_file << element[0] + ' '}
-                    new_file << "#{$/}"
-      braille_array.drop(2).each_slice(3) {|element|
+      new_file << "#{$/}"
+      braille_array.drop(62).each_slice(3) {|element|
                     new_file << element[0] + ' '}
     end
   end

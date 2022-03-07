@@ -10,8 +10,8 @@ RSpec.describe FileConverterEnglish do
     @translation = FileConverterEnglish.new(File.read(@file))
   end
 
-  describe 'Iterations 1 and 2' do
-    it 'Is instantiated as an object' do
+  describe 'Iteration 1' do
+    it 'is instantiated as an object' do
       expect(@translation).to be_a(FileConverterEnglish)
     end
 

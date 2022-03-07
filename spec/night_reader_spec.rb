@@ -20,14 +20,14 @@ RSpec.describe FileConverterBraille do
 
     it 'can create a new file with the same contents as the first' do
       ARGV = [@file, @new_file]
-      translation = FileConverterEnglish.new(File.read(@file))
+      translation = FileConverterBraille.new(File.read(@file))
       translation.create_new_file
       expect(translation.read_new_file[1]).to eq("hello world!\n")
     end
 
     it 'can read the file and print confirmation to the terminal' do
       ARGV = [@file, @new_file]
-      @translation = FileConverterEnglish.new(File.read(@file))
+      @translation = FileConverterBraille.new(File.read(@file))
       @translation.create_new_file
       expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 13 characters")
     end

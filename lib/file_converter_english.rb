@@ -26,7 +26,7 @@ class FileConverterEnglish
   end
 
   def create_braille_characters
-    translation = English_Braille_Map.new(read_original_file)
+    translation = EnglishBrailleMap.new(read_original_file)
     translation.find_braille_chars.flatten
   end
 

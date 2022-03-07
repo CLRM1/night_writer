@@ -31,6 +31,11 @@ RSpec.describe FileConverterBraille do
       @translation.create_new_file
       expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 13 characters")
     end
+
+    it 'has a map of all braille characters to english letters' do
+      braille_to_english_map = BrailleEnglishMap.new('0.0.0.')
+      expect(braille_to_english_map.braille_key_map['0.','..','..']).to eq("a")
+    end
   end
 
 

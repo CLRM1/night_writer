@@ -36,27 +36,32 @@ RSpec.describe FileConverterEnglish do
 
   describe 'Iteration 2' do
     it 'has a map of english letters to braille characters' do
-      english_to_braille_map = English_Braille_Map.new(:a)
+      english_to_braille_map = EnglishBrailleMap.new('abc')
       expect(english_to_braille_map.english_key_map).to be_a(Hash)
       english_to_braille_map.letters_a_through_g
       english_to_braille_map.letters_h_through_n
       english_to_braille_map.letters_o_through_u
-      english_to_braille_map.letters_v_through_z
-      expect(english_to_braille_map.english_key_map[:a]).to eq(['0 .','. .','. .'])
-      expect(english_to_braille_map.english_key_map[:h]).to eq(['0 .','0 0','. .'])
-      expect(english_to_braille_map.english_key_map[:o]).to eq(['0 .','. 0','0 .'])
-      expect(english_to_braille_map.english_key_map[:v]).to eq(['0 .','0 .','0 0'])
+      english_to_braille_map.letters_v_through_z_and_space
+      expect(english_to_braille_map.english_key_map[:a]).to eq(['0.','..','..'])
+      expect(english_to_braille_map.english_key_map[:h]).to eq(['0.','00','..'])
+      expect(english_to_braille_map.english_key_map[:o]).to eq(['0.','.0','0.'])
+      expect(english_to_braille_map.english_key_map[:v]).to eq(['0.','0.','00'])
     end
 
     it 'has a map of all english letters' do
-      english_to_braille_map = English_Braille_Map.new(:a)
+      english_to_braille_map = EnglishBrailleMap.new('abc')
       english_to_braille_map.all_letters
-      expect(english_to_braille_map.english_key_map[:r]).to eq(['0 .','0 0','0 .'])
-      expect(english_to_braille_map.english_key_map[:z]).to eq(['0 .','. 0','0 0'])
+      expect(english_to_braille_map.english_key_map[:r]).to eq(['0.','00','0.'])
+      expect(english_to_braille_map.english_key_map[:z]).to eq(['0.','.0','00'])
+    end
+
+    it 'parses letter' do
+      english_to_braille_map = EnglishBrailleMap.new('abcdefghijklmnopqrstuvwxyz')
+      expect(english_to_braille_map.letter_parser).to eq([[:s, :h, :a, :l, :l, :" ", :i, :" ", :c, :o, :m, :p, :a, :r, :e, :" ", :t, :h, :e, :e, :" ", :t, :o, :" ", :a, :" ", :s, :u, :m, :m, :e, :r, :s, :" ", :d, :a, :y, :" ", :t, :h, :o]])
     end
 
     xit 'it finds a single english lowercase letter' do
-      english_to_braille_map = English_Braille_Map.new(:a)
+      english_to_braille_map = EnglishBrailleMap.new(:a)
       english_to_braille_map.all_letters
       expect(english_to_braille_map.find_braille_char(:a)).to eq('0 .
                                                                  . .

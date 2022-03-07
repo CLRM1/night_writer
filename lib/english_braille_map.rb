@@ -1,4 +1,4 @@
-class English_Braille_Map
+class EnglishBrailleMap
 
   attr_reader :english_key_map
 
@@ -43,11 +43,11 @@ class English_Braille_Map
   end
 
   def letters_v_through_z_and_space
-    @english_key_map[:v] = ['0 .','0 .','00']
+    @english_key_map[:v] = ['0.','0.','00']
     @english_key_map[:w] = ['.0','00','.0']
     @english_key_map[:x] = ['00','..','00']
     @english_key_map[:y] = ['00','.0','00']
-    @english_key_map[:z] = ['0 .','.0','00']
+    @english_key_map[:z] = ['0.','.0','00']
     @english_key_map[:" "] = ['..','..','..']
   end
 

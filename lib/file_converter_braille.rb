@@ -24,6 +24,7 @@ class FileConverterBraille
 
   def create_english_letters
     translation = BrailleEnglishMap.new(read_original_file)
+    translation.find_english_letter
   end
 
   def english_letter_count
@@ -39,6 +40,12 @@ class FileConverterBraille
     full_braille_char_array << nested_braille_array[0][0].slice(0..1)
     full_braille_char_array <<  nested_braille_array[1][0].slice(0..1)
     full_braille_char_array << nested_braille_array[2][0].slice(0..1)
+  end
+
+  def update_new_file_to_english
+    new_english_file = File.open("./lib/#{@inputs[1]}", 'w')
+    english_letters = create_english_letters
+    new_english_file.write(english_letters)
   end
 
   def print_confirmation

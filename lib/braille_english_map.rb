@@ -1,4 +1,4 @@
-class BreailleEnglishMap
+class BrailleEnglishMap
 
   attr_reader :braille_key_map
 
@@ -53,4 +53,19 @@ class BreailleEnglishMap
     letters_v_through_z_and_space
   end
 
+  def braille_parser
+    read_original_file = File.readlines("./lib/braille.txt")
+    original_braille_array = read_original_file.map {|row| row.chop}
+    nested_braille_array = original_braille_array.map {|row| row.split}
+    full_braille_char_array = []
+    full_braille_char_array << nested_braille_array[0][0].slice(0..1)
+    full_braille_char_array <<  nested_braille_array[1][0].slice(0..1)
+    full_braille_char_array << nested_braille_array[2][0].slice(0..1)
+  end
+
+  def find_english_letter(characters = @characters)
+    all_letters
+    braille_character_key = braille_parser
+    english_letter = @braille_key_map[braille_character_key]
+  end
 end

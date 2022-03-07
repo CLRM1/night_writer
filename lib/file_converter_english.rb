@@ -22,7 +22,7 @@ class FileConverterEnglish
 
   def read_new_file
     # open the new brialle file and read each line of the file, storing them as elements in an array
-    File.readlines("./lib/#{@inputs[1]}")
+    a = File.readlines("./lib/#{@inputs[1]}")
   end
 
   def create_braille_characters

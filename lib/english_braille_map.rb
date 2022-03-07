@@ -54,7 +54,6 @@ class EnglishBrailleMap
   end
 
   def letter_parser
-    # require 'pry'; binding.pry
     @letters.map {|letter| letter.chomp.chars.map {|letter| letter.to_sym}}
   end
 

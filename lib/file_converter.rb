@@ -37,30 +37,28 @@ class FileConverter
     braille_character_count = lines.join.length
   end
 
+  def characters_within_limit_array
+    lines_within_limit = []
+    create_braille_characters.each_slice(60) {|line| lines_within_limit << line}
+    lines_within_limit
+  end
+
   def update_new_file_to_braille
-    braille_array = create_braille_characters
-    @new_braille_file = open("./lib/#{@inputs[1]}", 'w') do |new_file|
-      if braille_characater_count <= 80
-        braille_array.each_slice(3) {|element|
-                      new_file << element[0] + ' '}
-        new_file <<  "#{$/}"
-        braille_array.drop(1).each_slice(3) {|element|
-                      new_file << element[0] + ' '}
-        new_file << "#{$/}"
-        braille_array.drop(2).each_slice(3) {|element|
-                      new_file << element[0] + ' '}
-      end
-      new_file << "#{$/}"
-      braille_array.drop(60).each_slice(3) {|element|
-                    new_file << element[0] + ' '}
-      new_file << "#{$/}"
-      braille_array.drop(61).each_slice(3) {|element|
-                    new_file << element[0] + ' '}
-      new_file << "#{$/}"
-      braille_array.drop(62).each_slice(3) {|element|
-                    new_file << element[0] + ' '}
+    characters_within_limit_array.each do |line_within_limit|
+      new_braille_file = File.open("./lib/#{@inputs[1]}", 'w')
+        line_within_limit.each_slice(3) {|element|
+          new_braille_file.write(element[0])}
+          new_braille_file.write("\n")
+        line_within_limit.drop(1).each_slice(3) {|element|
+          new_braille_file.write(element[0])}
+          new_braille_file.write("\n")
+        line_within_limit.drop(2).each_slice(3) {|element|
+          new_braille_file.write(element[0])}
+          new_braille_file.write("\n")
+      new_braille_file.close
     end
   end
+
 
   def print_confirmation
     # join the elements in the array into a single array and store in the variable characters

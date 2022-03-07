@@ -25,15 +25,15 @@ class English_Braille_Map
   def letters_h_through_n
     @english_key_map[:h] = ['0.','00','..']
     @english_key_map[:i] = ['.0','0.','..']
-    @english_key_map[:j] = ['. 0','00','..']
+    @english_key_map[:j] = ['.0','00','..']
     @english_key_map[:k] = ['0.','..','0.']
     @english_key_map[:l] = ['0.','0.','0.']
     @english_key_map[:m] = ['00','..','0.']
-    @english_key_map[:n] = ['00','. 0','0.']
+    @english_key_map[:n] = ['00','.0','0.']
   end
 
   def letters_o_through_u
-    @english_key_map[:o] = ['0.','. 0','0.']
+    @english_key_map[:o] = ['0.','.0','0.']
     @english_key_map[:p] = ['00','0.','0.']
     @english_key_map[:q] = ['00','00','0.']
     @english_key_map[:r] = ['0.','00','0.']

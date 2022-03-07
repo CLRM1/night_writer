@@ -42,23 +42,32 @@ class FileConverter
   end
 
   def update_new_file_to_braille
-    characters_within_limit_array.each do |line_within_limit|
+
       new_braille_file = File.open("./lib/#{@inputs[1]}", 'w')
-      line_within_limit.each_slice(3) {|element|
+      characters_within_limit_array[0].each_slice(3) {|element|
         new_braille_file.write(element[0])}
         new_braille_file.write("\n")
-      line_within_limit.drop(1).each_slice(3) {|element|
+      characters_within_limit_array[0].drop(1).each_slice(3) {|element|
         new_braille_file.write(element[0])}
         new_braille_file.write("\n")
-      line_within_limit.drop(2).each_slice(3) {|element|
+      characters_within_limit_array[0].drop(2).each_slice(3) {|element|
         new_braille_file.write(element[0])}
         new_braille_file.write("\n")
-      if line_within_limit.count == 60
+      # if line_within_limit.count == 60
+        # new_braille_file.write("\n")
+      characters_within_limit_array[1].each_slice(3) {|element|
+        new_braille_file.write(element[0])}
         new_braille_file.write("\n")
-      end
+      characters_within_limit_array[1].drop(1).each_slice(3) {|element|
+        new_braille_file.write(element[0])}
+        new_braille_file.write("\n")
+      characters_within_limit_array[1].drop(2).each_slice(3) {|element|
+        new_braille_file.write(element[0])}
+        new_braille_file.write("\n")
+      # end
       new_braille_file.close
       # require 'pry'; binding.pry
-    end
+    # end
   end
 
 

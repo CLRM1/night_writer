@@ -53,17 +53,24 @@ class FileConverterEnglish
     characters_within_limit_array[0].drop(2).each_slice(3) {|element|
       new_braille_file.write(element[0])}
       new_braille_file.write("\n")
-    if characters_within_limit_array.count > 1
-      characters_within_limit_array[1].each_slice(3) {|element|
-        new_braille_file.write(element[0])}
-        new_braille_file.write("\n")
-      characters_within_limit_array[1].drop(1).each_slice(3) {|element|
-        new_braille_file.write(element[0])}
-        new_braille_file.write("\n")
-      characters_within_limit_array[1].drop(2).each_slice(3) {|element|
-        new_braille_file.write(element[0])}
-        new_braille_file.write("\n")
-    end
+    characters_within_limit_array[1].each_slice(3) {|element|
+      new_braille_file.write(element[0])}
+      new_braille_file.write("\n")
+    characters_within_limit_array[1].drop(1).each_slice(3) {|element|
+      new_braille_file.write(element[0])}
+      new_braille_file.write("\n")
+    characters_within_limit_array[1].drop(2).each_slice(3) {|element|
+      new_braille_file.write(element[0])}
+      new_braille_file.write("\n")
+    characters_within_limit_array[2].each_slice(3) {|element|
+      new_braille_file.write(element[0])}
+      new_braille_file.write("\n")
+    characters_within_limit_array[2].drop(1).each_slice(3) {|element|
+      new_braille_file.write(element[0])}
+      new_braille_file.write("\n")
+    characters_within_limit_array[2].drop(2).each_slice(3) {|element|
+      new_braille_file.write(element[0])}
+      new_braille_file.write("\n")
     new_braille_file.close
   end
 

@@ -1,6 +1,6 @@
 require './lib/english_braille_map'
 
-class FileConverter
+class FileConverterEnglish
   # stores frist file (message.txt) contents to variable
   attr_reader :file
 
@@ -11,6 +11,7 @@ class FileConverter
 
   def read_original_file
     File.readlines("./lib/message.txt")
+    # require 'pry'; binding.pry
   end
 
   # create a new file and shuvel the 'file' ^^ variable with message content into the new file
@@ -42,28 +43,28 @@ class FileConverter
   end
 
   def update_new_file_to_braille
-      new_braille_file = File.open("./lib/#{@inputs[1]}", 'w')
-      characters_within_limit_array[0].each_slice(3) {|element|
+    new_braille_file = File.open("./lib/#{@inputs[1]}", 'w')
+    characters_within_limit_array[0].each_slice(3) {|element|
+      new_braille_file.write(element[0])}
+      new_braille_file.write("\n")
+    characters_within_limit_array[0].drop(1).each_slice(3) {|element|
+      new_braille_file.write(element[0])}
+      new_braille_file.write("\n")
+    characters_within_limit_array[0].drop(2).each_slice(3) {|element|
+      new_braille_file.write(element[0])}
+      new_braille_file.write("\n")
+    if characters_within_limit_array.count > 1
+      characters_within_limit_array[1].each_slice(3) {|element|
         new_braille_file.write(element[0])}
         new_braille_file.write("\n")
-      characters_within_limit_array[0].drop(1).each_slice(3) {|element|
+      characters_within_limit_array[1].drop(1).each_slice(3) {|element|
         new_braille_file.write(element[0])}
         new_braille_file.write("\n")
-      characters_within_limit_array[0].drop(2).each_slice(3) {|element|
+      characters_within_limit_array[1].drop(2).each_slice(3) {|element|
         new_braille_file.write(element[0])}
         new_braille_file.write("\n")
-      if characters_within_limit_array.count > 1
-        characters_within_limit_array[1].each_slice(3) {|element|
-          new_braille_file.write(element[0])}
-          new_braille_file.write("\n")
-        characters_within_limit_array[1].drop(1).each_slice(3) {|element|
-          new_braille_file.write(element[0])}
-          new_braille_file.write("\n")
-        characters_within_limit_array[1].drop(2).each_slice(3) {|element|
-          new_braille_file.write(element[0])}
-          new_braille_file.write("\n")
-      end
-      new_braille_file.close
+    end
+    new_braille_file.close
   end
 
   def print_confirmation

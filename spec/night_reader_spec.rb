@@ -14,18 +14,18 @@ RSpec.describe FileConverterBraille do
       expect(@translation).to be_a(FileConverterBraille)
     end
 
-    xit 'can read a file' do
+    it 'can read a file' do
       expect(@translation.file.lines[1]).to eq("hello world!\n")
     end
 
-    xit 'can create a new file with the same contents as the first' do
+    it 'can create a new file with the same contents as the first' do
       ARGV = [@file, @new_file]
       translation = FileConverterEnglish.new(File.read(@file))
       translation.create_new_file
       expect(translation.read_new_file[1]).to eq("hello world!\n")
     end
 
-    xit 'can read the file and print confirmation to the terminal' do
+    it 'can read the file and print confirmation to the terminal' do
       ARGV = [@file, @new_file]
       @translation = FileConverterEnglish.new(File.read(@file))
       @translation.create_new_file

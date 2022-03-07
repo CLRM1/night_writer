@@ -1,6 +1,7 @@
 require 'simplecov'
 SimpleCov.start
 require './lib/file_converter_braille'
+require './lib/braille_english_map'
 
 RSpec.describe FileConverterBraille do
   before(:each) do

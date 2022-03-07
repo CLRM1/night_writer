@@ -40,14 +40,17 @@ RSpec.describe FileConverterBraille do
     end
 
     it 'translates a sinlge braille character' do
-      braille_to_english_map = BrailleEnglishMap.new(['0.','..','..'])
+      braille_to_english_map = BrailleEnglishMap.new([".0", "0.", "0."])
       braille_to_english_map.braille_parser
       expect(braille_to_english_map.find_english_letter([".0", "0.", "0."])).to eq('s')
     end
 
     it 'can write a single translated character' do
-
+      @translation.create_new_file
+      @translation.update_new_file_to_english
+      expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 1 characters")
     end
+
   end
 
 

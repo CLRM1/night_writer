@@ -1,3 +1,5 @@
+require './lib/braille_english_map'
+
 class FileConverterBraille
 
   attr_reader :file
@@ -8,7 +10,7 @@ class FileConverterBraille
   end
 
   def read_original_file
-    File.readlines("./lib/message.txt")
+    File.readlines("./lib/braille.txt")
   end
 
   def create_new_file
@@ -18,6 +20,25 @@ class FileConverterBraille
 
   def read_new_file
     File.readlines("./lib/#{@inputs[1]}")
+  end
+
+  def create_english_letters
+    translation = BrailleEnglishMap.new(read_original_file)
+  end
+
+  def english_letter_count
+    lines = File.readlines("./lib/#{@inputs[1]}")
+    lines = lines.map{|element| element.chomp}
+    english_letter_count = lines.join.length
+  end
+
+  def characters_within_limit_array
+    original_braille_array = read_original_file.map {|row| row.chop}
+    nested_braille_array = original_braille_array.map {|row| row.split}
+    full_braille_char_array = []
+    full_braille_char_array << nested_braille_array[0][0].slice(0..1)
+    full_braille_char_array <<  nested_braille_array[1][0].slice(0..1)
+    full_braille_char_array << nested_braille_array[2][0].slice(0..1)
   end
 
   def print_confirmation

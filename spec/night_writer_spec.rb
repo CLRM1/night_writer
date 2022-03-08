@@ -1,7 +1,7 @@
 require 'simplecov'
 SimpleCov.start
 require './lib/file_converter_english'
-require './lib/english_braille_map'
+require './lib/english_to_braille_dictionary'
 
 RSpec.describe FileConverterEnglish do
   before(:each) do
@@ -16,35 +16,35 @@ RSpec.describe FileConverterEnglish do
     end
 
     it 'has a map of english letters to braille characters' do
-      english_to_braille_map = EnglishBrailleMap.new('abc')
-      expect(english_to_braille_map.english_key_map).to be_a(Hash)
-      english_to_braille_map.letters_a_through_g
-      english_to_braille_map.letters_h_through_n
-      english_to_braille_map.letters_o_through_u
-      english_to_braille_map.letters_v_through_z_and_space
-      expect(english_to_braille_map.english_key_map[:a]).to eq(['0.','..','..'])
-      expect(english_to_braille_map.english_key_map[:h]).to eq(['0.','00','..'])
-      expect(english_to_braille_map.english_key_map[:o]).to eq(['0.','.0','0.'])
-      expect(english_to_braille_map.english_key_map[:v]).to eq(['0.','0.','00'])
+      english_to_braille_dictionary = English_to_braille_dictionary.new('abc')
+      expect(english_to_braille_dictionary.english_key_map).to be_a(Hash)
+      english_to_braille_dictionary.letters_a_through_g
+      english_to_braille_dictionary.letters_h_through_n
+      english_to_braille_dictionary.letters_o_through_u
+      english_to_braille_dictionary.letters_v_through_z_and_space
+      expect(english_to_braille_dictionary.english_key_map[:a]).to eq(['0.','..','..'])
+      expect(english_to_braille_dictionary.english_key_map[:h]).to eq(['0.','00','..'])
+      expect(english_to_braille_dictionary.english_key_map[:o]).to eq(['0.','.0','0.'])
+      expect(english_to_braille_dictionary.english_key_map[:v]).to eq(['0.','0.','00'])
     end
 
     it 'has a map of all english letters' do
-      english_to_braille_map = EnglishBrailleMap.new('abc')
-      english_to_braille_map.all_letters
-      expect(english_to_braille_map.english_key_map[:r]).to eq(['0.','00','0.'])
-      expect(english_to_braille_map.english_key_map[:z]).to eq(['0.','.0','00'])
+      english_to_braille_dictionary = English_to_braille_dictionary.new('abc')
+      english_to_braille_dictionary.all_letters
+      expect(english_to_braille_dictionary.english_key_map[:r]).to eq(['0.','00','0.'])
+      expect(english_to_braille_dictionary.english_key_map[:z]).to eq(['0.','.0','00'])
     end
 
     it 'has capitalized letters' do
-      english_to_braille_map = EnglishBrailleMap.new('abc')
-      english_to_braille_map.all_letters
-      expect(english_to_braille_map.english_key_map[:A]).to eq([['..', '..', '.0'],['0.','..','..']])
-      expect(english_to_braille_map.english_key_map[:B]).to eq([['..', '..', '.0'],['0.','0.','..']])
+      english_to_braille_dictionary = English_to_braille_dictionary.new('abc')
+      english_to_braille_dictionary.all_letters
+      expect(english_to_braille_dictionary.english_key_map[:A]).to eq([['..', '..', '.0'],['0.','..','..']])
+      expect(english_to_braille_dictionary.english_key_map[:B]).to eq([['..', '..', '.0'],['0.','0.','..']])
     end
 
     it 'parses letters' do
-      english_to_braille_map = EnglishBrailleMap.new(['abcdefghijklmnopqrstuvwxyz'])
-      expect(english_to_braille_map.letter_parser).to eq([[:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k, :l, :m, :n, :o, :p, :q, :r, :s, :t, :u, :v, :w, :x, :y, :z]])
+      english_to_braille_dictionary = English_to_braille_dictionary.new(['abcdefghijklmnopqrstuvwxyz'])
+      expect(english_to_braille_dictionary.letter_parser).to eq([[:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k, :l, :m, :n, :o, :p, :q, :r, :s, :t, :u, :v, :w, :x, :y, :z]])
     end
 
     it 'can read the original file and return multiple braille characters in the new file' do

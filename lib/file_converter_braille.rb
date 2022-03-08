@@ -1,4 +1,4 @@
-require './lib/braille_english_map'
+require './lib/braille_to_english_dictionary'
 
 class FileConverterBraille
 
@@ -18,10 +18,6 @@ class FileConverterBraille
       new_file << @file}
   end
 
-  # def read_new_file
-  #   File.readlines("./lib/#{@inputs[1]}")
-  # end
-
   def characters_within_limit_array
     original_braille_array = read_original_file.map {|row| row.chop}
     nested_braille_array = original_braille_array.map {|row| row.split}
@@ -32,7 +28,7 @@ class FileConverterBraille
   end
 
   def create_english_letters
-    translation = BrailleEnglishMap.new(read_original_file)
+    translation = Braille_to_english_dictionary.new(read_original_file)
     translation.find_english_letter
   end
 

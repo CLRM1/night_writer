@@ -1,4 +1,4 @@
-require './lib/english_braille_map'
+require './lib/english_to_braille_dictionary'
 
 class FileConverterEnglish
   # stores frist file (message.txt) contents to variable
@@ -21,7 +21,7 @@ class FileConverterEnglish
   end
 
   def create_braille_characters
-    translation = EnglishBrailleMap.new(read_original_file)
+    translation = English_to_braille_dictionary.new(read_original_file)
     translation.find_braille_chars.flatten
   end
 

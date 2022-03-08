@@ -1,4 +1,4 @@
-class BrailleEnglishMap
+class Braille_to_english_dictionary
 
   attr_reader :braille_key_map
 

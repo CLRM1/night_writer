@@ -35,6 +35,13 @@ RSpec.describe FileConverterEnglish do
       expect(english_to_braille_map.english_key_map[:z]).to eq(['0.','.0','00'])
     end
 
+    it 'has capitalized letters' do
+      english_to_braille_map = EnglishBrailleMap.new('abc')
+      english_to_braille_map.all_letters
+      expect(english_to_braille_map.english_key_map[:A]).to eq([['..', '..', '.0'],['0.','..','..']])
+      expect(english_to_braille_map.english_key_map[:B]).to eq([['..', '..', '.0'],['0.','0.','..']])
+    end
+
     it 'parses letters' do
       english_to_braille_map = EnglishBrailleMap.new(['abcdefghijklmnopqrstuvwxyz'])
       expect(english_to_braille_map.letter_parser).to eq([[:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k, :l, :m, :n, :o, :p, :q, :r, :s, :t, :u, :v, :w, :x, :y, :z]])

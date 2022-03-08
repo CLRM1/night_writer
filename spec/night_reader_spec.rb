@@ -16,39 +16,49 @@ RSpec.describe FileConverterBraille do
       expect(@translation).to be_a(FileConverterBraille)
     end
 
-    it 'can read a file' do
-      expect(@translation.file.lines[1]).to eq("0.00..0.0...0......0..0...00.0..0000.0.0..00.0......0........0000....0...0..0000\n")
-    end
-
-    it 'can create a new file with the same contents as the first' do
-      expect(@translation.read_new_file[1]).to eq("0.00..0.0...0......0..0...00.0..0000.0.0..00.0......0........0000....0...0..0000\n")
-    end
-
-    it 'can read the file and print confirmation to the terminal' do
-      expect(@translation.print_confirmation).to eq("Created 'original_message.txt' containing 41 characters")
-    end
-
-    xit 'has a map of all braille characters to english letters' do
+    it 'has a map of all braille characters to english letters' do
       braille_to_english_map = BrailleEnglishMap.new(['0.','..','..'])
       braille_to_english_map.braille_parser
-      expect(braille_to_english_map.characters).to eq("a")
+      braille_to_english_map.all_letters
+      expect(braille_to_english_map.braille_key_map).to eq({["0.", "..", ".."]=>"a",
+                                                           ["0.", "0.", ".."]=>"b",
+                                                           ["00", "..", ".."]=>"c",
+                                                           ["00", ".0", ".."]=>"d",
+                                                           ["0.", ".0", ".."]=>"e",
+                                                           ["00", "0.", ".."]=>"f",
+                                                           ["00", "00", ".."]=>"g",
+                                                           ["0.", "00", ".."]=>"h",
+                                                           [".0", "0.", ".."]=>"i",
+                                                           [".0", "00", ".."]=>"j",
+                                                           ["0.", "..", "0."]=>"k",
+                                                           ["0.", "0.", "0."]=>"l",
+                                                           ["00", "..", "0."]=>"m",
+                                                           ["00", ".0", "0."]=>"n",
+                                                           ["0.", ".0", "0."]=>"o",
+                                                           ["00", "0.", "0."]=>"p",
+                                                           ["00", "00", "0."]=>"q",
+                                                           ["0.", "00", "0."]=>"r",
+                                                           [".0", "0.", "0."]=>"s",
+                                                           [".0", "00", "0."]=>"t",
+                                                           ["0.", "..", "00"]=>"u",
+                                                           ["0.", "0.", "00"]=>"v",
+                                                           [".0", "00", ".0"]=>"w",
+                                                           ["00", "..", "00"]=>"x",
+                                                           ["00", ".0", "00"]=>"y",
+                                                           ["0.", ".0", "00"]=>"z",
+                                                           ["..", "..", ".."]=>" "
+                                                           })
     end
 
-    it 'has braille characters within the limit' do
-      braille_to_english_map = BrailleEnglishMap.new(['0.','..','..'])
-      expect(@translation.characters_within_limit_array).to eq([".00.0.0.0....0..000.00000.0.0....00.0.0....00...0....00.00000.0..0..000.00...00.", "0.00..0.0...0......0..0...00.0..0000.0.0..00.0......0........0000....0...0..0000", "0.....0.0.........0.0.0"])
-    end
-
-    it 'translates a sinlge braille character' do
-      braille_to_english_map = BrailleEnglishMap.new([".0", "0.", "0."])
-      braille_to_english_map.braille_parser
-      expect(braille_to_english_map.find_english_letter([".0", "0.", "0."])).to eq('s')
+    it 'translates a sinlge braille character and has braille characters within the limit' do
+      braille_to_english_map = BrailleEnglishMap.new(['a'])
+      expect(@translation.characters_within_limit_array).to eq(["0.", "00", ".."])
     end
 
     it 'can write a single translated character' do
       @translation.create_new_file
       @translation.update_new_file_to_english
-      expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 1 characters")
+      expect(@translation.print_confirmation).to eq("Created 'original_message.txt' containing 68 characters")
     end
 
   end

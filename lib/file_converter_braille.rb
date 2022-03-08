@@ -18,9 +18,9 @@ class FileConverterBraille
       new_file << @file}
   end
 
-  def read_new_file
-    File.readlines("./lib/#{@inputs[1]}")
-  end
+  # def read_new_file
+  #   File.readlines("./lib/#{@inputs[1]}")
+  # end
 
   def characters_within_limit_array
     original_braille_array = read_original_file.map {|row| row.chop}

@@ -5,36 +5,16 @@ require './lib/english_braille_map'
 
 RSpec.describe FileConverterEnglish do
   before(:each) do
-    @file = './lib/message.txt'
+    @file = './lib/test_message.txt'
     @new_file = 'braille.txt'
     @translation = FileConverterEnglish.new(File.read(@file))
   end
 
-  describe 'Iteration 1' do
+  describe 'Iterations and 2' do
     it 'is instantiated as an object' do
       expect(@translation).to be_a(FileConverterEnglish)
     end
 
-    xit 'can read a file' do
-      expect(@translation.file.lines[1]).to eq("hello world!\n")
-    end
-
-    xit 'can create a new file with the same contents as the first' do
-      ARGV = [@file, @new_file]
-      translation = FileConverterEnglish.new(File.read(@file))
-      translation.create_new_file
-      expect(translation.read_new_file[1]).to eq("hello world!\n")
-    end
-
-    xit 'can read the file and print confirmation to the terminal' do
-      ARGV = [@file, @new_file]
-      @translation = FileConverterEnglish.new(File.read(@file))
-      @translation.create_new_file
-      expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 13 characters")
-    end
-  end
-
-  describe 'Iteration 2' do
     it 'has a map of english letters to braille characters' do
       english_to_braille_map = EnglishBrailleMap.new('abc')
       expect(english_to_braille_map.english_key_map).to be_a(Hash)
@@ -55,34 +35,9 @@ RSpec.describe FileConverterEnglish do
       expect(english_to_braille_map.english_key_map[:z]).to eq(['0.','.0','00'])
     end
 
-    it 'parses letter' do
-      english_to_braille_map = EnglishBrailleMap.new('abcdefghijklmnopqrstuvwxyz')
-      expect(english_to_braille_map.letter_parser).to eq([[:s, :h, :a, :l, :l, :" ", :i, :" ", :c, :o, :m, :p, :a, :r, :e, :" ", :t, :h, :e, :e, :" ", :t, :o, :" ", :a, :" ", :s, :u, :m, :m, :e, :r, :s, :" ", :d, :a, :y, :" ", :t, :h, :o]])
-    end
-
-    xit 'it finds a single english lowercase letter' do
-      english_to_braille_map = EnglishBrailleMap.new(:a)
-      english_to_braille_map.all_letters
-      expect(english_to_braille_map.find_braille_char(:a)).to eq('0 .
-                                                                 . .
-                                                                 . .
-                                                                 . .')
-    end
-
-    it 'can read the original file' do
-      ARGV = [@file, @new_file]
-      @translation = FileConverterEnglish.new(File.read(@file))
-      @translation.create_new_file
-      @translation.update_new_file_to_braille
-      expect(@translation.read_original_file).to eq(["shall i compare thee to a summers day tho\n"])
-    end
-
-    it 'can read the original file and return a single braille character in the new file' do
-      ARGV = [@file, @new_file]
-      @translation = FileConverterEnglish.new(File.read(@file))
-      @translation.create_new_file
-      @translation.update_new_file_to_braille
-      expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 1 characters")
+    it 'parses letters' do
+      english_to_braille_map = EnglishBrailleMap.new(['abcdefghijklmnopqrstuvwxyz'])
+      expect(english_to_braille_map.letter_parser).to eq([[:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k, :l, :m, :n, :o, :p, :q, :r, :s, :t, :u, :v, :w, :x, :y, :z]])
     end
 
     it 'can read the original file and return multiple braille characters in the new file' do
@@ -90,7 +45,7 @@ RSpec.describe FileConverterEnglish do
       @translation = FileConverterEnglish.new(File.read(@file))
       @translation.create_new_file
       @translation.update_new_file_to_braille
-      expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 2 characters")
+      expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 11 characters")
     end
 
     it 'creates a new line when the number of braille characters exceedes 80 (40 english characters)' do
@@ -98,7 +53,7 @@ RSpec.describe FileConverterEnglish do
       @translation = FileConverterEnglish.new(File.read(@file))
       @translation.create_new_file
       @translation.update_new_file_to_braille
-      expect(@translation.braille_characater_count).to eq(240)
+      expect(@translation.braille_characater_count).to eq(66)
     end
   end
 end

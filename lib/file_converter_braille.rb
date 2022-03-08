@@ -36,13 +36,6 @@ class FileConverterBraille
     translation.find_english_letter
   end
 
-  def english_letter_count
-    lines = File.readlines("./lib/#{@inputs[1]}")
-    lines = lines.map{|element| element.chomp}
-    english_letter_count = lines.join.length
-  end
-
-
   def update_new_file_to_english
     new_english_file = File.open("./lib/#{@inputs[1]}", 'w')
     english_letters = create_english_letters.join

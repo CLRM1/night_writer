@@ -20,11 +20,6 @@ class FileConverterEnglish
       new_file << @file}
   end
 
-  def read_new_file
-    # open the new brialle file and read each line of the file, storing them as elements in an array
-    a = File.readlines("./lib/#{@inputs[1]}")
-  end
-
   def create_braille_characters
     translation = EnglishBrailleMap.new(read_original_file)
     translation.find_braille_chars.flatten
@@ -40,39 +35,64 @@ class FileConverterEnglish
     lines_within_limit = []
     create_braille_characters.each_slice(120) {|line| lines_within_limit << line}
     lines_within_limit
+    # require 'pry'; binding.pry
   end
 
+  # def update_new_file_to_braille
+  #   new_braille_file = File.open("./lib/#{@inputs[1]}", 'w')
+  #   characters_within_limit_array[0].each_slice(3) {|element|
+  #     new_braille_file.write(element[0])}
+  #     new_braille_file.write("\n")
+  #   characters_within_limit_array[0].drop(1).each_slice(3) {|element|
+  #     new_braille_file.write(element[0])}
+  #     new_braille_file.write("\n")
+  #   characters_within_limit_array[0].drop(2).each_slice(3) {|element|
+  #     new_braille_file.write(element[0])}
+  #     new_braille_file.write("\n")
+  #   characters_within_limit_array[1].each_slice(3) {|element|
+  #     new_braille_file.write(element[0])}
+  #     new_braille_file.write("\n")
+  #   characters_within_limit_array[1].drop(1).each_slice(3) {|element|
+  #     new_braille_file.write(element[0])}
+  #     new_braille_file.write("\n")
+  #   characters_within_limit_array[1].drop(2).each_slice(3) {|element|
+  #     new_braille_file.write(element[0])}
+  #     new_braille_file.write("\n")
+  #   characters_within_limit_array[2].each_slice(3) {|element|
+  #     new_braille_file.write(element[0])}
+  #     new_braille_file.write("\n")
+  #   characters_within_limit_array[2].drop(1).each_slice(3) {|element|
+  #     new_braille_file.write(element[0])}
+  #     new_braille_file.write("\n")
+  #   characters_within_limit_array[2].drop(2).each_slice(3) {|element|
+  #     new_braille_file.write(element[0])}
+  #     new_braille_file.write("\n")
+  #   new_braille_file.close
+  # end
   def update_new_file_to_braille
-    new_braille_file = File.open("./lib/#{@inputs[1]}", 'w')
-    characters_within_limit_array[0].each_slice(3) {|element|
-      new_braille_file.write(element[0])}
-      new_braille_file.write("\n")
-    characters_within_limit_array[0].drop(1).each_slice(3) {|element|
-      new_braille_file.write(element[0])}
-      new_braille_file.write("\n")
-    characters_within_limit_array[0].drop(2).each_slice(3) {|element|
-      new_braille_file.write(element[0])}
-      new_braille_file.write("\n")
-    characters_within_limit_array[1].each_slice(3) {|element|
-      new_braille_file.write(element[0])}
-      new_braille_file.write("\n")
-    characters_within_limit_array[1].drop(1).each_slice(3) {|element|
-      new_braille_file.write(element[0])}
-      new_braille_file.write("\n")
-    characters_within_limit_array[1].drop(2).each_slice(3) {|element|
-      new_braille_file.write(element[0])}
-      new_braille_file.write("\n")
-    characters_within_limit_array[2].each_slice(3) {|element|
-      new_braille_file.write(element[0])}
-      new_braille_file.write("\n")
-    characters_within_limit_array[2].drop(1).each_slice(3) {|element|
-      new_braille_file.write(element[0])}
-      new_braille_file.write("\n")
-    characters_within_limit_array[2].drop(2).each_slice(3) {|element|
-      new_braille_file.write(element[0])}
-      new_braille_file.write("\n")
-    new_braille_file.close
-  end
+   new_braille_file = File.open("./lib/#{@inputs[1]}", 'w')
+   characters_within_limit_array[0].each_slice(3) {|element|
+     new_braille_file.write(element[0])}
+     new_braille_file.write("\n")
+   characters_within_limit_array[0].drop(1).each_slice(3) {|element|
+     new_braille_file.write(element[0])}
+     new_braille_file.write("\n")
+   characters_within_limit_array[0].drop(2).each_slice(3) {|element|
+     new_braille_file.write(element[0])}
+     new_braille_file.write("\n")
+   if characters_within_limit_array.count > 1
+     characters_within_limit_array[1].each_slice(3) {|element|
+       new_braille_file.write(element[0])}
+       new_braille_file.write("\n")
+     characters_within_limit_array[1].drop(1).each_slice(3) {|element|
+       new_braille_file.write(element[0])}
+       new_braille_file.write("\n")
+     characters_within_limit_array[1].drop(2).each_slice(3) {|element|
+       new_braille_file.write(element[0])}
+       new_braille_file.write("\n")
+   end
+   new_braille_file.close
+ end
 
   def print_confirmation
     # join the elements in the array into a single array and store in the variable characters

@@ -37,7 +37,8 @@ RSpec.describe FileConverterEnglish do
 
     it 'has capitalized letters' do
       english_to_braille_dictionary = English_to_braille_dictionary.new('abc')
-      english_to_braille_dictionary.all_letters
+      # english_to_braille_dictionary.all_letters
+      english_to_braille_dictionary.capital_letters_a_through_g
       expect(english_to_braille_dictionary.english_key_map[:A]).to eq([['..', '..', '.0'],['0.','..','..']])
       expect(english_to_braille_dictionary.english_key_map[:B]).to eq([['..', '..', '.0'],['0.','0.','..']])
     end

@@ -46,6 +46,11 @@ class English_to_braille_dictionary
     @english_key_map[:" "] = ['..','..','..']
   end
 
+  def capital_letters_a_through_g
+    @english_key_map[:A] = [['..', '..', '.0'],['0.','..','..']]
+    @english_key_map[:B] = [['..', '..', '.0'],['0.','0.','..']]
+  end
+
   def all_letters
     letters_a_through_g
     letters_h_through_n

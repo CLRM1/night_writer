@@ -57,25 +57,32 @@ class BrailleEnglishMap
     read_original_file = File.readlines("./lib/braille.txt")
     original_braille_array = read_original_file.map {|row| row.chop}
     nested_braille_array = original_braille_array.map {|row| row.split}
+
+    number_of_nested_arrays = ((nested_braille_array[0].map {|elem| elem.length})[0])/2
+
     number_of_rows = nested_braille_array.count
-    full_braille_char_array = Array.new(number_of_rows) {Array.new(0,'')}
+    full_braille_char_array = [[[], [], []],[[], [], []],[[], [], []]]
+    new_char_arry = Array.new(number_of_nested_arrays) {Array.new(3,'')}
     # require 'pry'; binding.pry
-    full_braille_char_array[0] << nested_braille_array[0][0].slice(0..1)
-    full_braille_char_array[0] << nested_braille_array[1][0].slice(0..1)
-    full_braille_char_array[0] << nested_braille_array[2][0].slice(0..1)
-
-    full_braille_char_array[1] << nested_braille_array[0][0].slice(2..3)
-    full_braille_char_array[1] << nested_braille_array[1][0].slice(2..3)
-    full_braille_char_array[1] << nested_braille_array[2][0].slice(2..3)
-
-    full_braille_char_array[2] << nested_braille_array[0][0].slice(4..5)
-    full_braille_char_array[2] << nested_braille_array[1][0].slice(4..5)
-    full_braille_char_array[2] << nested_braille_array[2][0].slice(4..5)
-
-    full_braille_char_array[3] << nested_braille_array[0][0].slice(6..7)
-    full_braille_char_array[3] << nested_braille_array[1][0].slice(6..7)
-    full_braille_char_array[3] << nested_braille_array[2][0].slice(6..7)
-    # require 'pry'; binding.pry. loop through till collection is empty, before starting group first thres sub arrays into one element. one element as a collection of three arrays. enumerables to get two elements
+    original_braille_array.each do |element|
+      require 'pry'; binding.pry
+      new_char_arry[0][0] << element.slice(0..1)
+      # new_char_arry[0][1] << element.slice(2..3)
+      # new_char_arry[0][2] << element.slice(4..5)
+      # if new_char_arry[0].count > 2
+      #   # require 'pry'; binding.pry
+      #   new_char_arry[1][0] << element.slice(6..7)
+      #   new_char_arry[1][1] << element.slice(8..9)
+      #   new_char_arry[1][2] << element.slice(10..11)
+      # end
+      # if new_char_arry[0].count > 3
+      #   # require 'pry'; binding.pry
+      #   new_char_arry[2][0] << element.slice(12..13)
+      #   new_char_arry[2][1] << element.slice(14..15)
+      #   new_char_arry[2][2] << element.slice(16..17)
+      # end
+    end
+    require 'pry'; binding.pry
     full_braille_char_array
   end
 
@@ -90,6 +97,21 @@ class BrailleEnglishMap
 end
 
 
+# require 'pry'; binding.pry. loop through till collection is empty, before starting group first three sub arrays into one element. one element as a collection of three arrays. enumerables to get two elements
+#
+#  full_braille_char_array = [[[], [], []],[[], [], []],[[], [], []]]
+#  full_braille_char_array[0][0] << nested_braille_array[0][0].slice(0..1)
+#  full_braille_char_array[0][1] << nested_braille_array[0][0].slice(2..3)
+#  while full_braille_char_array[0][1] << nested_braille_array[0][0].slice(2..3) != nil
+#    iterate over
+# nested_braille_array.each do ||
+# returns nested_braille_array.map {|row| row[0].slice(0..1)} a sinlge letter
+ # read_original_file.each do |element|
+   # full_braille_char_array[0][0] << element.slice(0..1)
+   # full_braille_char_array[0][1] << element.slice(2..3)
+   # full_braille_char_array[0][2] << element.slice(2..3)
+ # end
+
 # full_braille_char_array.each do
 
 #   full_braille_char_array[0] << nested_braille_array[0][0].slice(0..1)
@@ -99,3 +121,23 @@ end
   # full_braille_char_array[number_of_rows, range begins] << nested_braille_array[0][0].slice(0..1)
   # full_braille_char_array.index([".0", "0.", "0."]) - returns the index
   # end
+
+
+  #  ****old solution for braille_parser method
+  # full_braille_char_array = Array.new(number_of_rows) {Array.new(0,'')}
+  # require 'pry'; binding.pry
+  # full_braille_char_array[0] << nested_braille_array[0][0].slice(0..1)
+  # full_braille_char_array[0] << nested_braille_array[1][0].slice(0..1)
+  # full_braille_char_array[0] << nested_braille_array[2][0].slice(0..1)
+  #
+  # full_braille_char_array[1] << nested_braille_array[0][0].slice(2..3)
+  # full_braille_char_array[1] << nested_braille_array[1][0].slice(2..3)
+  # full_braille_char_array[1] << nested_braille_array[2][0].slice(2..3)
+  #
+  # full_braille_char_array[2] << nested_braille_array[0][0].slice(4..5)
+  # full_braille_char_array[2] << nested_braille_array[1][0].slice(4..5)
+  # full_braille_char_array[2] << nested_braille_array[2][0].slice(4..5)
+  #
+  # full_braille_char_array[3] << nested_braille_array[0][0].slice(6..7)
+  # full_braille_char_array[3] << nested_braille_array[1][0].slice(6..7)
+  # full_braille_char_array[3] << nested_braille_array[2][0].slice(6..7)

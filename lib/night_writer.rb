@@ -1,6 +1,6 @@
-require './lib/file_converter'
+require './lib/file_converter_english'
 
-translation = FileConverter.new(File.read("./lib/message.txt"))
+translation = FileConverterEnglish.new(File.read("./lib/message.txt"))
 translation.create_new_file
 translation.update_new_file_to_braille
 translation.print_confirmation

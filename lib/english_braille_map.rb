@@ -1,15 +1,10 @@
-class English_Braille_Map
+class EnglishBrailleMap
 
   attr_reader :english_key_map
 
   def initialize(letters)
     @english_key_map = {}
     @letters = letters
-  end
-
-  def letter_parser
-    # require 'pry'; binding.pry
-    @letters.map {|letter| letter.chomp.chars.map {|letter| letter.to_sym}}
   end
 
   def letters_a_through_g
@@ -43,11 +38,11 @@ class English_Braille_Map
   end
 
   def letters_v_through_z_and_space
-    @english_key_map[:v] = ['0 .','0 .','00']
+    @english_key_map[:v] = ['0.','0.','00']
     @english_key_map[:w] = ['.0','00','.0']
     @english_key_map[:x] = ['00','..','00']
     @english_key_map[:y] = ['00','.0','00']
-    @english_key_map[:z] = ['0 .','.0','00']
+    @english_key_map[:z] = ['0.','.0','00']
     @english_key_map[:" "] = ['..','..','..']
   end
 
@@ -56,6 +51,10 @@ class English_Braille_Map
     letters_h_through_n
     letters_o_through_u
     letters_v_through_z_and_space
+  end
+
+  def letter_parser
+    @letters.map {|letter| letter.chomp.chars.map {|letter| letter.to_sym}}
   end
 
   def find_braille_chars(letters = @letters)

@@ -37,7 +37,6 @@ RSpec.describe FileConverterEnglish do
 
     it 'has capitalized letters' do
       english_to_braille_dictionary = English_to_braille_dictionary.new('abc')
-      # english_to_braille_dictionary.all_letters
       english_to_braille_dictionary.capital_letters_a_through_g
       expect(english_to_braille_dictionary.english_key_map[:A]).to eq([['..', '..', '.0'],['0.','..','..']])
       expect(english_to_braille_dictionary.english_key_map[:B]).to eq([['..', '..', '.0'],['0.','0.','..']])
@@ -53,7 +52,7 @@ RSpec.describe FileConverterEnglish do
       @translation = FileConverterEnglish.new(File.read(@file))
       @translation.create_new_file
       @translation.update_new_file_to_braille
-      expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 11 characters")
+      expect(@translation.print_confirmation).to eq("Created 'braille.txt' containing 42 characters")
     end
 
     it 'creates a new line when the number of braille characters exceedes 80 (40 english characters)' do
@@ -61,7 +60,7 @@ RSpec.describe FileConverterEnglish do
       @translation = FileConverterEnglish.new(File.read(@file))
       @translation.create_new_file
       @translation.update_new_file_to_braille
-      expect(@translation.braille_characater_count).to eq(66)
+      expect(@translation.braille_characater_count).to eq(252)
     end
   end
 end

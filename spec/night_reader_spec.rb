@@ -50,18 +50,17 @@ RSpec.describe FileConverterBraille do
                                                            })
     end
 
-    it 'translates a sinlge braille character and has braille characters within the limit' do
-      braille_to_english_dictionary = Braille_to_english_dictionary.new(['a'])
-      expect(@translation.characters_within_limit_array).to eq(["0.", "00", ".."])
-    end
 
-    it 'can write a single translated character' do
+    it 'can write translated characters' do
       @translation.create_new_file
       @translation.update_new_file_to_english
-      expect(@translation.print_confirmation).to eq("Created 'original_message.txt' containing 68 characters")
+      expect(@translation.print_confirmation).to eq("Created 'original_message.txt' containing 257 characters")
     end
 
+    it 'can print a confrimation message' do
+      @translation.create_new_file
+      @translation.update_new_file_to_english
+      expect(@translation.print_confirmation).to eq("Created 'original_message.txt' containing 257 characters")
+    end
   end
-
-
 end

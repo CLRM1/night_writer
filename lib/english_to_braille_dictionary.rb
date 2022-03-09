@@ -1,4 +1,4 @@
-class EnglishBrailleMap
+class English_to_braille_dictionary
 
   attr_reader :english_key_map
 
@@ -44,6 +44,11 @@ class EnglishBrailleMap
     @english_key_map[:y] = ['00','.0','00']
     @english_key_map[:z] = ['0.','.0','00']
     @english_key_map[:" "] = ['..','..','..']
+  end
+
+  def capital_letters_a_through_g
+    @english_key_map[:A] = [['..', '..', '.0'],['0.','..','..']]
+    @english_key_map[:B] = [['..', '..', '.0'],['0.','0.','..']]
   end
 
   def all_letters

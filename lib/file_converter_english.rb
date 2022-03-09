@@ -1,4 +1,4 @@
-require './lib/english_braille_map'
+require './lib/english_to_braille_dictionary'
 
 class FileConverterEnglish
   # stores frist file (message.txt) contents to variable
@@ -11,17 +11,15 @@ class FileConverterEnglish
 
   def read_original_file
     File.readlines("./lib/message.txt")
-    # require 'pry'; binding.pry
   end
 
-  # create a new file and shuvel the 'file' ^^ variable with message content into the new file
   def create_new_file
     open("./lib/#{@inputs[1]}", 'w'){|new_file|
       new_file << @file}
   end
 
   def create_braille_characters
-    translation = EnglishBrailleMap.new(read_original_file)
+    translation = English_to_braille_dictionary.new(read_original_file)
     translation.find_braille_chars.flatten
   end
 
@@ -35,40 +33,8 @@ class FileConverterEnglish
     lines_within_limit = []
     create_braille_characters.each_slice(120) {|line| lines_within_limit << line}
     lines_within_limit
-    # require 'pry'; binding.pry
   end
 
-  # def update_new_file_to_braille
-  #   new_braille_file = File.open("./lib/#{@inputs[1]}", 'w')
-  #   characters_within_limit_array[0].each_slice(3) {|element|
-  #     new_braille_file.write(element[0])}
-  #     new_braille_file.write("\n")
-  #   characters_within_limit_array[0].drop(1).each_slice(3) {|element|
-  #     new_braille_file.write(element[0])}
-  #     new_braille_file.write("\n")
-  #   characters_within_limit_array[0].drop(2).each_slice(3) {|element|
-  #     new_braille_file.write(element[0])}
-  #     new_braille_file.write("\n")
-  #   characters_within_limit_array[1].each_slice(3) {|element|
-  #     new_braille_file.write(element[0])}
-  #     new_braille_file.write("\n")
-  #   characters_within_limit_array[1].drop(1).each_slice(3) {|element|
-  #     new_braille_file.write(element[0])}
-  #     new_braille_file.write("\n")
-  #   characters_within_limit_array[1].drop(2).each_slice(3) {|element|
-  #     new_braille_file.write(element[0])}
-  #     new_braille_file.write("\n")
-  #   characters_within_limit_array[2].each_slice(3) {|element|
-  #     new_braille_file.write(element[0])}
-  #     new_braille_file.write("\n")
-  #   characters_within_limit_array[2].drop(1).each_slice(3) {|element|
-  #     new_braille_file.write(element[0])}
-  #     new_braille_file.write("\n")
-  #   characters_within_limit_array[2].drop(2).each_slice(3) {|element|
-  #     new_braille_file.write(element[0])}
-  #     new_braille_file.write("\n")
-  #   new_braille_file.close
-  # end
   def update_new_file_to_braille
    new_braille_file = File.open("./lib/#{@inputs[1]}", 'w')
    characters_within_limit_array[0].each_slice(3) {|element|
@@ -95,7 +61,6 @@ class FileConverterEnglish
  end
 
   def print_confirmation
-    # join the elements in the array into a single array and store in the variable characters
     characters = read_original_file.join
     character_count = characters.length
     p "Created '#{@inputs[1]}' containing #{character_count - 1} characters"
